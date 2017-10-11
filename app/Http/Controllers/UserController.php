@@ -56,6 +56,13 @@ class UserController extends Controller
                 ->with(['errors' => 'Falha ao cadastrar!']);
     }
 
+    public function profile()
+    {
+        $title = 'Meu Perfil';
+
+        return view('school.user.profile', compact('title'));
+    }
+
     public function logout()
     {
         Auth::logout();

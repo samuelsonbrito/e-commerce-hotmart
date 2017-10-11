@@ -69,7 +69,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Meu Perfil</a></li>
+                            <li><a href="{{route('profile')}}">Meu Perfil</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{url('logout')}}">Sair</a></li>
                         </ul>

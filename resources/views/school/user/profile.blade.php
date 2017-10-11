@@ -3,13 +3,12 @@
 @section('content')
     <section class="pg-form">
 
-        <h1 class="title">Cadastre-se</h1>
+        <h1 class="title">Meu Perfil</h1>
 
-        {{Form::open(['route'=>'new-user', 'class'=>'form-horizontal', 'files'=> true ])}}
+        {{Form::model(auth()->user(), ['route'=>'profile.update', 'class'=>'form-horizontal', 'files'=> true ])}}
 
             @include('school.user.form')
 
         {{Form::close()}}
-
     </section>
 @endsection

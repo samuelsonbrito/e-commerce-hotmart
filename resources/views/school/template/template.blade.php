@@ -61,18 +61,24 @@
                 </li>
             </ul>
             <ul class="navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">
-                        <img src="{{url('assets/img/profile.png')}}" alt="Perfil" class="img-perfil">
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Meu Perfil</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Sair</a></li>
-                    </ul>
-                </li>
+                @if( auth()->check() )<!--Verifica se a pessoa está logada ou não-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">
+                            <img src="{{url('assets/img/profile.png')}}" alt="Perfil" class="img-perfil">
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Meu Perfil</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{url('logout')}}">Sair</a></li>
+                        </ul>
+                    </li>
+                @else
+                    <li class="navbar-nav menu-itens">
+                        <a href="{{url('login')}}">Entrar</a>
+                    </li>
+                @endif
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

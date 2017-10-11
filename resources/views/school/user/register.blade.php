@@ -5,7 +5,7 @@
 
         <h1 class="title">Cadastre-se</h1>
 
-        <form class="form-horizontal" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+        <form class="form-horizontal" method="POST" action="{{ url('new-user') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

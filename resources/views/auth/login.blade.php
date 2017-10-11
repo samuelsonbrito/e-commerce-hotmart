@@ -3,7 +3,7 @@
 @section('content')
     <section class="pg-form">
 
-        <h1>Entrar</h1>
+        <h1 class="title">Entrar</h1>
 
         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}

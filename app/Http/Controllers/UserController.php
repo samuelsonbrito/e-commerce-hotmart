@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -20,7 +21,7 @@ class UserController extends Controller
         return view('school.user.register');
     }
 
-    public function registring(Request $request)
+    public function registring(RegisterUserRequest $request)
     {
         //Recupera todos os dados do formulario
         $dataForm = $request->all();

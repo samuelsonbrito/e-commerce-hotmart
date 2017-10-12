@@ -55,7 +55,7 @@
 
 <div class="form-group">
     <div class="col-md-12">
-        {{Form::password('password', ['class'=>'form-control', 'placeholder'=>'Confirmar Senha:'])}}
+        {{Form::password('password_confirmation', ['class'=>'form-control', 'placeholder'=>'Confirmar Senha:'])}}
     </div>
 </div>
 

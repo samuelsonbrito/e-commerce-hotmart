@@ -28,6 +28,7 @@ class UserController extends Controller
         $dataForm = $request->all();
 
         //Criptografa a senha
+        $password = $dataForm['password'];
         $dataForm['password'] = bcrypt($dataForm['password']);
 
         if ($request->hasFile('image')) {
@@ -48,13 +49,15 @@ class UserController extends Controller
             unset($dataForm['image']);
         }
 
-        //Cadastrar o usuario
+        //Cadastra o usuario
         $insert = $this->user->create($dataForm);
 
         //Verifica se cadastrou com sucesso
         if ($insert)
-            return redirect()
-                ->route('home');
+            if (Auth::attempt(['email' => $dataForm['email'], 'password' => $password]))
+                return redirect()->route('profile');
+            else
+                return redirect('/login');
         else
             return redirect()
                 ->back()
@@ -105,7 +108,7 @@ class UserController extends Controller
         if ($update)
             return redirect()
                 ->back()
-                ->with(['success'=>'Perfil atualizado com sucesso!']);
+                ->with(['success' => 'Perfil atualizado com sucesso!']);
         else
             return redirect()
                 ->back()

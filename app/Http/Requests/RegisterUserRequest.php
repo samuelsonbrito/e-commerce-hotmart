@@ -27,6 +27,7 @@ class RegisterUserRequest extends FormRequest
             'name' => 'required|min:3|max:100',
             'email' => 'required|min:3|max:100|email|unique:users',//validando o email como unico
             'password' => 'required|min:6|max:15|confirmed',
+            'password_confirmation' => 'required|same:password',
             'image' => 'image',
             'token' => 'max:250',
             'bibliography' => 'max:1000',

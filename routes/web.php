@@ -1,7 +1,7 @@
 <?php
 
 $this->get('cadastrar', 'UserController@register');
-$this->post('new-user', 'UserController@registring');
+$this->post('new-user', 'UserController@registring')->name('new-user');
 $this->get('logout', 'UserController@logout');
 $this->get('perfil', 'UserController@profile')->name('profile');
 $this->post('profile-update', 'UserController@profileUpdate')->name('profile.update');

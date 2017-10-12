@@ -61,19 +61,23 @@
                 </li>
             </ul>
             <ul class="navbar-nav navbar-right">
-                @if( auth()->check() )<!--Verifica se a pessoa está logada ou não-->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">
+            @if( auth()->check() )<!--Verifica se a pessoa está logada ou não-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        @if( auth()->user()->image != '')
+                            <img src="{{url("uploads/users/".auth()->user()->image)}}" alt="Perfil" class="img-perfil">
+                        @else
                             <img src="{{url('assets/img/profile.png')}}" alt="Perfil" class="img-perfil">
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{route('profile')}}">Meu Perfil</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="{{url('logout')}}">Sair</a></li>
-                        </ul>
-                    </li>
+                        @endif
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{route('profile')}}">Meu Perfil</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{url('logout')}}">Sair</a></li>
+                    </ul>
+                </li>
                 @else
                     <li class="navbar-nav menu-itens">
                         <a href="{{url('login')}}">Entrar</a>

@@ -41,6 +41,9 @@ class UserController extends Controller
                 return redirect()
                     ->back()
                     ->with(['errors' => 'Falha no upload da imagem!']);
+        } else {
+            //Deleta a posição da imagem
+            unset($dataForm['image']);
         }
 
         //Cadastrar o usuario
@@ -61,6 +64,49 @@ class UserController extends Controller
         $title = 'Meu Perfil';
 
         return view('school.user.profile', compact('title'));
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $dataForm = $request->all();
+
+        $user = $this->user->find(auth()->user()->id);
+
+        if ($dataForm['password'] != '')
+            $dataForm['password'] = bcrypt($dataForm['password']);
+        else
+            unset($dataForm['password']);
+
+        if ($request->hasFile('image')) {
+            //dd($nameImage = $user->image);
+
+            $image = $request->file('image');
+
+            if ($user->image != null)
+                $nameImage = $user->image;
+            else
+                $nameImage = uniqid(date('YmdHis')) . '.' . $image->getClientOriginalExtension();
+
+            $dataForm['image'] = $nameImage;
+
+            $upload = $image->storeAs('users', $nameImage);
+
+            if (!$upload)
+                return redirect()
+                    ->back()
+                    ->with(['errors' => 'Falha no upload da imagem!']);
+        }
+
+        $update = $user->update($dataForm);
+
+        //Verifica se atualizou com sucesso
+        if ($update)
+            return redirect()
+                ->route('home');
+        else
+            return redirect()
+                ->back()
+                ->with(['errors' => 'Falha ao editar!']);
     }
 
     public function logout()

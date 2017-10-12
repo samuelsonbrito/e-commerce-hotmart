@@ -27,7 +27,7 @@
 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
     <div class="col-md-12">
 
-        {{Form::password('password', ['class'=>'form-control', 'placeholder'=>'Senha:','required'])}}
+        {{Form::password('password', ['class'=>'form-control', 'placeholder'=>'Senha:'])}}
 
         @if ($errors->has('password'))
             <span class="help-block">
@@ -39,7 +39,7 @@
 
 <div class="form-group">
     <div class="col-md-12">
-        {{Form::password('password', ['class'=>'form-control', 'placeholder'=>'Confirmar Senha:','required'])}}
+        {{Form::password('password', ['class'=>'form-control', 'placeholder'=>'Confirmar Senha:'])}}
     </div>
 </div>
 
@@ -78,17 +78,5 @@
                 <strong>{{ $errors->first('bibliography') }}</strong>
             </span>
         @endif
-    </div>
-</div>
-
-
-<div class="form-group">
-    <div class="col-md-12">
-        <button type="submit" class="btn btn-form">
-            Cadastrar
-        </button>
-        <a class="btn btn-link" href="{{ url('login') }}">
-            Entrar
-        </a>
     </div>
 </div>

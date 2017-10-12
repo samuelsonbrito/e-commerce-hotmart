@@ -23,9 +23,11 @@ class UpdateProfileUserRequest extends FormRequest
      */
     public function rules()
     {
+        $id = auth()->user()->id;
+
         return [
             'name' => 'required|min:3|max:100',
-            'email' => 'required|min:3|max:100|email',
+            'email' => "required|min:3|max:100|email|unique:users,email,{$id},id",//Validando o email com unico
             'password' => 'max:15|confirmed',
             'image' => 'image',
             'token' => 'max:250',

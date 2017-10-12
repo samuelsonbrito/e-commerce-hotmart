@@ -25,7 +25,7 @@ class RegisterUserRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:100',
-            'email' => 'required|min:3|max:100|email',
+            'email' => 'required|min:3|max:100|email|unique:users',//validando o email como unico
             'password' => 'required|min:6|max:15|confirmed',
             'image' => 'image',
             'token' => 'max:250',

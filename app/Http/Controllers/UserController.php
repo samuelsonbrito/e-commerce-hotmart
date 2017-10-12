@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
+use App\Http\Requests\UpdateProfileUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -67,7 +68,7 @@ class UserController extends Controller
         return view('school.user.profile', compact('title'));
     }
 
-    public function profileUpdate(Request $request)
+    public function profileUpdate(UpdateProfileUserRequest $request)
     {
         $dataForm = $request->all();
 
@@ -103,7 +104,8 @@ class UserController extends Controller
         //Verifica se atualizou com sucesso
         if ($update)
             return redirect()
-                ->route('home');
+                ->back()
+                ->with(['success'=>'Perfil atualizado com sucesso!']);
         else
             return redirect()
                 ->back()

@@ -1,3 +1,19 @@
+@if(isset($errors) && count($errors) > 0)
+    <div class="alert alert-warning">
+        @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
+@endif
+
+@if(session('success'))
+    <div class="alert alert-success">
+        <p>{{ session('success')}}</p>
+    </div>
+@endif
+
+
+
 {{ csrf_field() }}
 
 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

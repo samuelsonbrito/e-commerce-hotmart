@@ -6,6 +6,8 @@
 $this->group(['middleware' => 'auth'], function () {
     $this->get('cadastrar-curso', 'TeacherController@createCourse')->name('create.course');
     $this->post('cadastrar-curso', 'TeacherController@storeCourse')->name('store.course');
+
+    $this->get('meus-cursos', 'TeacherController@courses')->name('teacher.courses');
 });
 
 /************************************************************************************

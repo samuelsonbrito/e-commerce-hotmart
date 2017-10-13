@@ -39,7 +39,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="pg=index">
+            <a class="navbar-brand" href="">
                 <img src="{{url('assets/img/logo-laraschool.png')}}" alt="Lara School" class="logo">
             </a>
         </div>
@@ -53,9 +53,9 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Instrutor<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="?pg=home">Cursos</a></li>
-                            <li><a href="?pg=aluno">Alunos</a></li>
-                            <li><a href="?pg=venda">Vendas</a></li>
+                            <li><a href="{{route('teacher.courses')}}">Cursos</a></li>
+                            <li><a href="">Alunos</a></li>
+                            <li><a href="">Vendas</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{route('store.course')}}">Cadastrar Curso</a></li>
                         </ul>

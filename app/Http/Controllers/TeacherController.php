@@ -53,4 +53,12 @@ class TeacherController extends Controller
 
     }
 
+    public function courses(Course $course)
+    {
+        $title = 'Instrutor: Meus cursos';
+        $cursos = $course->where('user_id', auth()->user()->id)->paginate(8);
+
+        return view('school.teacher.courses', compact('cursos', 'title'));
+    }
+
 }

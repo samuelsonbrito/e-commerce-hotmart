@@ -46,20 +46,22 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="navbar-nav menu-itens">
-                <li><a href="#">Meus Cursos</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Instrutor<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="?pg=home">Cursos</a></li>
-                        <li><a href="?pg=aluno">Alunos</a></li>
-                        <li><a href="?pg=venda">Vendas</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="?pg=form">Cadastrar Curso</a></li>
-                    </ul>
-                </li>
-            </ul>
+            @if(auth()->check())
+                <ul class="navbar-nav menu-itens">
+                    <li><a href="{{url('')}}">Meus Cursos</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Instrutor<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="?pg=home">Cursos</a></li>
+                            <li><a href="?pg=aluno">Alunos</a></li>
+                            <li><a href="?pg=venda">Vendas</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{route('store.course')}}">Cadastrar Curso</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            @endif
             <ul class="navbar-nav navbar-right">
             @if( auth()->check() )<!--Verifica se a pessoa está logada ou não-->
                 <li class="dropdown">

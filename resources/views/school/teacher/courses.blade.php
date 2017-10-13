@@ -10,6 +10,9 @@
         <input type="submit" value="Pesquisar" class="btn btn-search">
         {{Form::close()}}
 
+        @if( isset($dataForm['key-search']))
+            <p><b>Resultados para: </b>{{$dataForm['key-search']}}</p>
+        @endif
     </div>
 
     <h1 class="title">{{$title}}</h1>
@@ -30,7 +33,11 @@
     </div><!--Courses-->
 
     <div class="pag">
-        {!! $cursos->links() !!}
+        @if(isset($dataForm))
+            {!! $cursos->appends($dataForm)->links() !!}
+        @else
+            {!! $cursos->links() !!}
+        @endif
     </div><!--Paginação-->
 
 

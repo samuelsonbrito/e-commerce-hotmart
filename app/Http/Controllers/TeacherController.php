@@ -9,6 +9,7 @@ use App\Models\Course;
 class TeacherController extends Controller
 {
     private $course;
+    private $totalPage = 1;
 
     public function __construct(Course $course)
     {
@@ -64,24 +65,24 @@ class TeacherController extends Controller
     public function courses()
     {
         $title = 'Instrutor: Meus cursos';
-        $cursos = $this->course->where('user_id', auth()->user()->id)->paginate(8);
+        $cursos = $this->course->where('user_id', auth()->user()->id)->paginate($this->totalPage);
 
         return view('school.teacher.courses', compact('cursos', 'title'));
     }
 
     public function courseSearch(Request $request)
     {
-        $dataForm = $request->all();
+        $dataForm = $request->except('_token');
         $keySearch = $dataForm['key-search'];
 
-        $title = "Instrutor: Meus cursos - Resultados para: {$keySearch}";
+        $title = "Instrutor: Meus cursos";
 
         $cursos = $this->course
             ->where('user_id', auth()->user()->id)
             ->where('name', 'LIKE', "%{$keySearch}%")
-            ->paginate(8);
+            ->paginate($this->totalPage);
 
-        return view('school.teacher.courses', compact('cursos', 'title'));
+        return view('school.teacher.courses', compact('cursos', 'title', 'dataForm'));
     }
 
 }

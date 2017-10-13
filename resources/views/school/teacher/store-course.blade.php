@@ -5,6 +5,15 @@
     <section class="pg-form">
         <h1 class="titulo-form">Cadastrar Novo Curso</h1>
 
+        @if(isset($errors) && count($errors) > 0)
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
+
+
         {{Form::open(['route'=>'store.course', 'class'=> 'form form-school', 'files' => true])}}
 
         <div class="form-group">

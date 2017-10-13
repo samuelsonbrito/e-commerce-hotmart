@@ -4,7 +4,8 @@
  * Instrutor
  ************************************************************************************/
 $this->group(['middleware' => 'auth'], function () {
-    $this->get('cadastrar-curso', 'TeacherController@createCourse')->name('store.course');
+    $this->get('cadastrar-curso', 'TeacherController@createCourse')->name('create.course');
+    $this->post('cadastrar-curso', 'TeacherController@storeCourse')->name('store.course');
 });
 
 /************************************************************************************

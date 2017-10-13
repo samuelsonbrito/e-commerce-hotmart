@@ -134,10 +134,10 @@
 </footer>
 
 <div class="copy text-center">
-    <p>Todos os direitos reservados
+    <p>Todos os direitos reservados - {!! date('Y') !!}
         <a href="https://valdir-ti.github.io" target="_blank">
             <img src="{{url('assets/img/minha_logo.png')}}" style="height: 20px;">
-        </a> {!! date('Y') !!}
+        </a>
     </p>
 </div>
 

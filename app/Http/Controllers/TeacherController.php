@@ -8,6 +8,14 @@ use App\Models\Course;
 
 class TeacherController extends Controller
 {
+    private $course;
+
+    public function __construct(Course $course)
+    {
+        $this->course = $course;
+    }
+
+
     public function createCourse(Category $category)
     {
 
@@ -43,20 +51,35 @@ class TeacherController extends Controller
         //Reccebendo o id do usuario logado para enviar para o banco
         $dataForm['user_id'] = auth()->user()->id;
 
-        $insert = $course->create($dataForm);
+        $insert = $this->course->create($dataForm);
 
         if ($insert)
-            redirect()->route('home')->with('success', 'Novo curso cadastrado com sucesso!');
+            return redirect()->route('teacher.courses')->with('success', 'Novo curso cadastrado com sucesso!');
         else
-            redirect()->back()->with(['errors' => 'Falha ao cadastrar novo curso!']);
+            return redirect()->back()->with(['errors' => 'Falha ao cadastrar novo curso!']);
 
 
     }
 
-    public function courses(Course $course)
+    public function courses()
     {
         $title = 'Instrutor: Meus cursos';
-        $cursos = $course->where('user_id', auth()->user()->id)->paginate(8);
+        $cursos = $this->course->where('user_id', auth()->user()->id)->paginate(8);
+
+        return view('school.teacher.courses', compact('cursos', 'title'));
+    }
+
+    public function courseSearch(Request $request)
+    {
+        $dataForm = $request->all();
+        $keySearch = $dataForm['key-search'];
+
+        $title = "Instrutor: Meus cursos - Resultados para: {$keySearch}";
+
+        $cursos = $this->course
+            ->where('user_id', auth()->user()->id)
+            ->where('name', 'LIKE', "%{$keySearch}%")
+            ->paginate(8);
 
         return view('school.teacher.courses', compact('cursos', 'title'));
     }

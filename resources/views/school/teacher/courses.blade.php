@@ -3,17 +3,13 @@
 @section('content')
 
     <div class="form-search">
-        <form class="form form-inline">
-            <input type="text" name="search" placeholder="Digite a sua pesquisa..." class="form-control">
 
-            <select name="category" class="form-control">
-                <option value="">Todas</option>
-                <option value="1">Web</option>
-                <option value="2">Mobile</option>
-            </select>
+        {{Form::open(['route'=>'teacher.courses.search', 'class' => 'form form-inline'])}}
+        {{Form::text('key-search', null, ['placeholder'=>'Digite um nome:', 'class'=>'form-control'])}}
 
-            <input type="submit" value="Pesquisar" class="btn btn-search">
-        </form>
+        <input type="submit" value="Pesquisar" class="btn btn-search">
+        {{Form::close()}}
+
     </div>
 
     <h1 class="title">{{$title}}</h1>

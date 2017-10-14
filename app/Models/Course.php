@@ -22,4 +22,10 @@ class Course extends Model
         'total_plots',
         'link_buy',
     ];
+
+    //Relacionamento do curso com os modulos
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
 }

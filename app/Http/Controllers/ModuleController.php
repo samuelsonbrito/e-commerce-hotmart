@@ -35,7 +35,13 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        return 'Method create';
+        $courses = Course::UserByAuth()->pluck('name', 'id');//Retorna os cursos referentes ao usuario logado
+
+        $curso_atual = Request('id');//Recebendo o id do curso atual
+
+        $title = "Cadastrar Novo Módulo";
+
+        return view('school.teacher.courses.module-create', compact('title', 'courses', 'curso_atual'));//envia o id do curso atual para a view
     }
 
     /**
@@ -46,7 +52,7 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

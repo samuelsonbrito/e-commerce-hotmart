@@ -4,7 +4,8 @@
 
     <h1 class="title">{{$title}}</h1>
 
-    <a href="{{route('modulos.create')}}" class="btn btn-create" title="Cadastrar Módulo"><span class="glyphicon glyphicon-plus"></span> Cadastrar</a>
+    <a href="{{route('modulos.create',['id'=>$course->id])}}" class="btn btn-create" title="Cadastrar Módulo"><span
+                class="glyphicon glyphicon-plus"></span> Cadastrar</a>
 
     <table class="table table-striped">
         <tr>

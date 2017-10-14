@@ -23,6 +23,11 @@ class Course extends Model
         'link_buy',
     ];
 
+    public function scopeUserByAuth($query)
+    {
+        return $query->where('user_id', auth()->user()->id);//Retorna o id do usuario logado
+    }
+
     //Relacionamento do curso com os modulos
     public function modules()
     {

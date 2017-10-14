@@ -33,8 +33,8 @@
                         <span class="glyphicon glyphicon-eye-open"></span>
                     </a>
                     <a href="{{route('course-modules', $curso->id)}}" class="btn-module-teacher"
-                       title="Adicionar módulo">
-                        <span class="glyphicon glyphicon-plus"></span>
+                       title="Módulos">
+                        <span class="glyphicon glyphicon-level-up"></span>
                     </a>
                     <a href="{{route('teacher.course.edit', $curso->id)}}" class="btn-view-edit" title="Editar curso">
                         <span class="glyphicon glyphicon-edit"></span>

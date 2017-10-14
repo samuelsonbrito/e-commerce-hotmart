@@ -140,4 +140,11 @@ class TeacherController extends Controller
             return redirect()->back()->with(['errors' => 'Falha ao editar o curso!']);
     }
 
+    public function modulesCourse($id)
+    {
+        $course = $this->course->find($id);
+
+        dd($course);
+    }
+
 }

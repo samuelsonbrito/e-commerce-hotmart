@@ -11,6 +11,8 @@ $this->group(['middleware' => 'auth'], function () {
     $this->any('meus-cursos-search', 'TeacherController@courseSearch')->name('teacher.courses.search');
     $this->get('curso-editar/{id}', 'TeacherController@editCourse')->name('teacher.course.edit');
     $this->post('atualizar-curso/{id}', 'TeacherController@updateCourse')->name('update.course');
+
+    $this->get('curso/{id}', 'TeacherController@modulesCourse')->name('course-modules');
 });
 
 /************************************************************************************

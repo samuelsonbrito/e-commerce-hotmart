@@ -375,23 +375,34 @@ ul.social-aula li a:hover {
 
 .btn-view-teacher {
     float: left;
-    width: 50%;
+    width: 34%;
     bottom: 0px;
     position: absolute;
-    background: #024c3c;
+    background: #e44b2f;
     color: #fff;
     text-align: center;
-    padding: 2px 0px;
+    padding: 5px 0px;
+    left: 0px;
 }
 
 .btn-view-edit {
-    float: right;
     position: absolute;
-    width: 50%;
+    width: 33.3333333333%;
     bottom: 0px;
-    background: #cc412f;
+    background: #5E27E8;
     color: #fff;
     text-align: center;
     right: 0px;
-    padding: 2px 0px;
+    padding: 5px 0px;
+}
+
+.btn-module-teacher {
+    position: absolute;
+    width: 33.3333333333%;
+    bottom: 0px;
+    background: #029a75;
+    color: #fff;
+    text-align: center;
+    right: 79px;
+    padding: 5px 0px;
 }

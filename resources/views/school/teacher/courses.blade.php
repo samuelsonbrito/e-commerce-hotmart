@@ -29,8 +29,16 @@
                     <h2 class="title-course">
                         {{$curso->name}}
                     </h2>
-                    <a href="" class="btn-view-teacher">Visualizar</a>
-                    <a href="{{route('teacher.course.edit', $curso->id)}}" class="btn-view-edit">Editar</a>
+                    <a href="" class="btn-view-teacher" title="Visualizar curso">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </a>
+                    <a href="{{route('course-modules', $curso->id)}}" class="btn-module-teacher"
+                       title="Adicionar módulo">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                    <a href="{{route('teacher.course.edit', $curso->id)}}" class="btn-view-edit" title="Editar curso">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </a>
                 </div>
             </article>
         @endforeach

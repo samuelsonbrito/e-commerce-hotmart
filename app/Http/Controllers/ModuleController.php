@@ -16,17 +16,81 @@ class ModuleController extends Controller
         $this->module = $module;
     }
 
-
-    //Exibir módulos do curso
-    public function index($idCourse)
+    public function byCourseId($idCourse)
     {
         $course = Course::find($idCourse);
-        //dd($course->modules()->get());
-        $modules = $course->modules()->paginate($this->totalPaginate);//Retorna todos os módulos do curso
+        //dd($course);
 
-        $title = "Módulos Curso: {$course->name}";
+        $modules = $course->modules()->paginate($this->totalPaginate);
 
-        return view('school.teacher.courses.modules', compact('course', 'modules', 'title'));
+        $title = "Módulos do curso: {$course->name}";
 
+        return view('school.teacher.courses.modules', compact('title', 'course', 'modules'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return 'Method create';
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

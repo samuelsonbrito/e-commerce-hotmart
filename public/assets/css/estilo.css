@@ -406,3 +406,10 @@ ul.social-aula li a:hover {
     right: 79px;
     padding: 5px 0px;
 }
+
+.btn-create {
+    background: #fb503b;
+    color: #fff;
+    margin: 10px 0px;
+    border-radius: 0px;
+}

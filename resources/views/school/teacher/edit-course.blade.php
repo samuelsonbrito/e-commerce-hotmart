@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="pg-form">
-        <h1 class="titulo-form">Cadastrar Novo Curso</h1>
+        <h1 class="titulo-form">Editar: {{$course->name}}</h1>
 
         @if(isset($errors) && count($errors) > 0)
             <div class="alert alert-danger">
@@ -13,8 +13,7 @@
             </div>
         @endif
 
-
-        {!! Form::open(['route'=>'store.course', 'class'=> 'form form-school', 'files' => true]) !!}
+        {!! Form::model($course, ['route'=> ['update.course', $course->id], 'class'=> 'form form-school', 'files' => true]) !!}
 
         @include('school.teacher.form-course')
 

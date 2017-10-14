@@ -56,16 +56,16 @@
     color: #6f6f6f;
     font-size: 1.8em;
     margin: 8px;
+    padding-bottom: 4rem;
 }
 
 .btn-view {
     background: #fb503a;
     color: #FFF;
     width: 100%;
-    /* float: left; */
     text-align: center;
-    padding: 5px;
-    font-size: 1.2em;
+    padding: 0.8rem;
+    font-size: 1em;
     position: absolute;
     bottom: 0;
 }
@@ -371,4 +371,27 @@ ul.social-aula li a:hover {
 
 .aula-bloqueada {
 
+}
+
+.btn-view-teacher {
+    float: left;
+    width: 50%;
+    bottom: 0px;
+    position: absolute;
+    background: #024c3c;
+    color: #fff;
+    text-align: center;
+    padding: 2px 0px;
+}
+
+.btn-view-edit {
+    float: right;
+    position: absolute;
+    width: 50%;
+    bottom: 0px;
+    background: #cc412f;
+    color: #fff;
+    text-align: center;
+    right: 0px;
+    padding: 2px 0px;
 }

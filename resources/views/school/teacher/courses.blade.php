@@ -25,7 +25,8 @@
                     <h2 class="title-course">
                         {{$curso->name}}
                     </h2>
-                    <a href="" class="btn-view">Saiba Mais</a>
+                    <a href="" class="btn-view-teacher">Visualizar</a>
+                    <a href="{{route('teacher.course.edit', $curso->id)}}" class="btn-view-edit">Editar</a>
                 </div>
             </article>
         @endforeach

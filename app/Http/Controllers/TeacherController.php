@@ -98,7 +98,7 @@ class TeacherController extends Controller
         return view('school.teacher.edit-course', compact('categories', 'title', 'course'));
     }
 
-    public function updateCourse(Request $request, $id)
+    public function updateCourse(CourseRequest $request, $id)
     {
         $course = $this->course->find($id);
         //dd($course);

@@ -109,6 +109,8 @@ class TeacherController extends Controller
         $dataForm['published'] = isset($dataForm['published']);
         $dataForm['free'] = isset($dataForm['free']);
 
+        $dataForm['code'] = str_pad($dataForm['code'], 3, 0, STR_PAD_LEFT);
+
         //Lógica para inserir a imagem
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -139,5 +141,4 @@ class TeacherController extends Controller
         else
             return redirect()->back()->with(['errors' => 'Falha ao editar o curso!']);
     }
-
 }

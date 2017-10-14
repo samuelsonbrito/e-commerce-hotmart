@@ -39,7 +39,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="{{route('home')}}">
                 <img src="{{url('assets/img/logo-laraschool.png')}}" alt="Lara School" class="logo">
             </a>
         </div>
@@ -48,7 +48,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             @if(auth()->check())
                 <ul class="navbar-nav menu-itens">
-                    <li><a href="{{url('')}}">Meus Cursos</a></li>
+                    <li><a href="{{route('teacher.courses')}}">Meus Cursos</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Instrutor<span class="caret"></span></a>

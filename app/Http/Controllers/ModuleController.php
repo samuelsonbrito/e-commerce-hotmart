@@ -82,7 +82,16 @@ class ModuleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $courses = Course::UserByAuth()->pluck('name', 'id');//Retorna os cursos referentes ao usuario logado
+
+        $module = $this->module->find($id);
+        //dd($module);
+
+        $curso_atual = Request('id');//Recebendo o id do curso atual
+
+        $title = "Editar módulo: {$module->name}";
+
+        return view('school.teacher.courses.module-edit', compact('module', 'title', 'courses', 'curso_atual'));
     }
 
     /**
@@ -94,7 +103,17 @@ class ModuleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $module = $this->module->find($id);
+
+        $dataForm = $request->all();
+
+        $update = $module->update($dataForm);
+
+        if ($update)
+            return redirect()->route('course-modules', $dataForm['course_id']);
+        else
+            return redirect()->back()->with(['errors' => 'Falha ao atualizar módulo!']);
+
     }
 
     /**

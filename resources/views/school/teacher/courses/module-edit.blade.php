@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        {!! Form::open(['route'=>'modulos.store', 'class'=> 'form form-school']) !!}
+        {!! Form::model($module, ['route'=>['modulos.update', $module->id], 'class'=> 'form form-school', 'method'=>'PUT']) !!}
 
         @include('school.teacher.courses.form-module')
 

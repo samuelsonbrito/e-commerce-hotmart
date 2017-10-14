@@ -13,7 +13,7 @@ class CourseRequest extends FormRequest
      */
     public function authorize()
     {
-        //dd($this->segment('2'));//Pega os parametros da url na ordem
+        //dd($this->segment(2));//Pega os parametros da url na ordem
         return true;
     }
 
@@ -24,7 +24,8 @@ class CourseRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->segment('2');
+        $id = $this->segment(2);
+        //dd($id);
 
         return [
             'category_id'   => 'required',
@@ -32,7 +33,7 @@ class CourseRequest extends FormRequest
             'url'           => "required|min:3|max:150|unique:courses,url,{$id},id",
             'description'   => 'required|min:3|max:2000',
             'image'         => 'image',
-            'code'          => "required|min:2|max:250|unique:courses|integer,code,{$id},id",
+            'code'          => "required|integer|unique:courses,code,{$id},id",
             'total_hours'   => 'required',
             'price'         => 'required',
             'price_plots'   => 'required',

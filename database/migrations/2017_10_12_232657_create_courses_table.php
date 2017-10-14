@@ -27,9 +27,9 @@ class CreateCoursesTable extends Migration
             $table->string('name', 150);
             $table->string('url', 20)->unique();
             $table->text('description')->nullable();
-            $table->string('image', 200);
+            $table->string('image', 200)->default(null);
             $table->integer('code')->unique();
-            $table->time('total_hours');
+            $table->string('total_hours', 5);
             $table->boolean('published');
             $table->boolean('free')->default(false);
             $table->double('price', 10, 2);

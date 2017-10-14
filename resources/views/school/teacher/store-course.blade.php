@@ -8,7 +8,7 @@
         @if(isset($errors) && count($errors) > 0)
             <div class="alert alert-danger">
                 @foreach($errors->all() as $error)
-                    <p>{{ $error }}</p>
+                    <p style="text-align: center">{{ $error }}</p>
                 @endforeach
             </div>
         @endif

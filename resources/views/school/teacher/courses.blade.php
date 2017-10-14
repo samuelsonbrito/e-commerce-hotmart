@@ -21,7 +21,11 @@
         @foreach($cursos as $curso)
             <article class="col-md-3 col-sm-6 col-xm-12">
                 <div class="course">
-                    <img src="{{url("uploads/courses/{$curso->image}")}}" alt="{{$curso->name}}">
+                    @if($curso->image == null)
+                        <img src="{{url("assets/img/sem-imagem.jpg")}}" alt="Sem imagem">
+                    @else
+                        <img src="{{url("uploads/courses/{$curso->image}")}}" alt="{{$curso->name}}">
+                    @endif
                     <h2 class="title-course">
                         {{$curso->name}}
                     </h2>

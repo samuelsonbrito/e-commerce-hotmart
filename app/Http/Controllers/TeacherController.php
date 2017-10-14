@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Course;
+use App\Http\Requests\CourseRequest;
 
 class TeacherController extends Controller
 {
@@ -28,7 +29,7 @@ class TeacherController extends Controller
         return view('school.teacher.store-course', compact('categories', 'title'));
     }
 
-    public function storeCourse(Request $request, Course $course)
+    public function storeCourse(CourseRequest $request, Course $course)
     {
         $dataForm = $request->all();
 
@@ -111,10 +112,16 @@ class TeacherController extends Controller
         //Lógica para inserir a imagem
         if ($request->hasFile('image')) {
             $image = $request->file('image');
+            //dd($image);
 
-            $nameImage = $dataForm['url'] . '.' . $image->getClientOriginalExtension();//Cria um nome para a imagem, baseado na URL.
+            if ($course->image != null)
+                $nameImage = $course->image;//Verifica se salvou a imagem no momento do cadastro
+            else
+                $nameImage = $dataForm['url'] . '.' . $image->getClientOriginalExtension();//Cria um nome para a imagem, baseado na URL.
+            //dd($nameImage);
 
-            $dataForm['image'] = $course->image;
+            $dataForm['image'] = $nameImage;
+            //dd($dataForm);
 
             $upload = $image->storeAs('courses', $nameImage);
 

@@ -7,13 +7,13 @@
     <a href="{{route('modulos.create',['id'=>$course->id])}}" class="btn btn-create" title="Cadastrar Módulo"><span
                 class="glyphicon glyphicon-plus"></span> Cadastrar</a>
 
-    @forelse( $modules as $module )
-        <table class="table table-striped">
-            <tr>
-                <th>Nome:</th>
-                <th>Descrição</th>
-                <th width="100px">Ação</th>
-            </tr>
+    <table class="table table-striped">
+        <tr>
+            <th>Nome:</th>
+            <th>Descrição</th>
+            <th width="100px">Ação</th>
+        </tr>
+        @forelse( $modules as $module )
             <tr>
                 <td>{{$module->name}}</td>
                 <td>{{$module->description}}</td>
@@ -23,17 +23,12 @@
                     </a>
                 </td>
             </tr>
-        </table>
-    @empty
-        <div class="alert alert-warning" role="alert">
-            <p>Não existem módulos cadastrados para esse curso!</p>
-        </div>
-    @endforelse
-
-
-
-
-
+        @empty
+            <div class="alert alert-warning" role="alert">
+                Não existe módulos cadastrado para esse curso!
+            </div>
+        @endforelse
+    </table>
 
     <div class="pag">
         {!! $modules->links() !!}

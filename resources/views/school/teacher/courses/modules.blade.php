@@ -25,7 +25,7 @@
             </tr>
         @empty
             <div class="alert alert-warning" role="alert">
-                Não existe módulos cadastrado para esse curso!
+                Não há módulos cadastrado para esse curso!
             </div>
         @endforelse
     </table>

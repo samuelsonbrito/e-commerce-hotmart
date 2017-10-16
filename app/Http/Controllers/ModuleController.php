@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ModuleStoreUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Module;
@@ -50,7 +51,7 @@ class ModuleController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ModuleStoreUpdateRequest $request)
     {
         //dd($request->all());
         $dataForm = $request->all();
@@ -101,7 +102,7 @@ class ModuleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ModuleStoreUpdateRequest $request, $id)
     {
         $module = $this->module->find($id);
 

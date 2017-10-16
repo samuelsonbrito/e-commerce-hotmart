@@ -18,9 +18,18 @@
                 <td>{{$module->name}}</td>
                 <td>{{$module->description}}</td>
                 <td>
-                    <a href="{{route('modulos.edit', $module->id)}}" class="btn btn-warning btn-edit">
+                    <a href="{{route('modulos.edit', $module->id)}}" class="btn btn-warning btn-edit" title="Editar Módulo">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
+
+                    {!! Form::open(['route'=>['modulos.destroy', $module->id], 'class'=>'form form-school', 'method'=>'DELETE']) !!}
+                    {!! Form::hidden('course_id', $module->course_id) !!}
+                    <button title="Deletar Módulo" type="submit" class="btn btn-danger btn-delete"
+                            onclick="return confirm('Você deseja realmente excluir este módulo?');">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    {!! Form::close() !!}
+
                 </td>
             </tr>
         @empty

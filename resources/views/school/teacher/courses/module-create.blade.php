@@ -3,6 +3,11 @@
 @section('content')
 
     <section class="pg-form">
+
+        <a href="{{URL::previous()}}">
+            Back <span class="glyphicon glyphicon-backward"></span>
+        </a>
+
         <h1 class="titulo-form">{{$title}}</h1>
 
         @if(isset($errors) && count($errors) > 0)

@@ -88,7 +88,8 @@ class ModuleController extends Controller
         $module = $this->module->find($id);
         //dd($module);
 
-        $curso_atual = Request('id');//Recebendo o id do curso atual
+        //Recebendo o id do curso atual
+        $curso_atual = Request('id');
 
         $title = "Editar módulo: {$module->name}";
 
@@ -123,8 +124,14 @@ class ModuleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $curso = $request->get('course_id');
+        //dd($curso);
+
+        //Recupera o modulo e já deleta o mesmo pelo id
+        $this->module->find($id)->delete();
+
+        return redirect()->route('course-modules', $curso);
     }
 }

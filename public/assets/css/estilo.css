@@ -413,3 +413,13 @@ ul.social-aula li a:hover {
     margin: 10px 0px;
     border-radius: 0px;
 }
+
+.btn-delete {
+    float: right;
+    width: 48%;
+}
+
+.btn-edit {
+    float: left;
+    width: 48%;
+}

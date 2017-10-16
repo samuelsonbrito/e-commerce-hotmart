@@ -11,4 +11,10 @@ class Module extends Model
         'name',
         'description',
     ];
+
+    public function lessons()
+    {
+        //Um módulo possui varias aulas
+        return $this->hasMany(Lesson::class);
+    }
 }

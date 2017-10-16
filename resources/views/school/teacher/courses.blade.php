@@ -32,7 +32,7 @@
                     <a href="" class="btn-view-teacher" title="Visualizar curso">
                         <span class="glyphicon glyphicon-eye-open"></span>
                     </a>
-                    <a href="{{route('course-modules', $curso->id)}}" class="btn-module-teacher"
+                    <a href="{{route('course.modules', $curso->id)}}" class="btn-module-teacher"
                        title="Módulos">
                         <span class="glyphicon glyphicon-level-up"></span>
                     </a>

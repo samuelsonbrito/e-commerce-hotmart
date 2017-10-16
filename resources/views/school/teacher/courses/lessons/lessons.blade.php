@@ -4,29 +4,33 @@
 
     <h1 class="title">{{$title}}</h1>
 
-    <a href="{{route('modulos.create',['id'=>$course->id])}}" class="btn btn-create" title="Cadastrar Módulo"><span
+    <a href="{{route('aulas.create',['id'=>$module->id])}}" class="btn btn-create" title="Cadastrar Módulo"><span
                 class="glyphicon glyphicon-plus"></span> Cadastrar</a>
 
     <table class="table table-striped">
         <tr>
-            <th>Nome:</th>
+            <th>Nome</th>
+            <th>Url</th>
             <th>Descrição</th>
+            <th>Free</th>
             <th width="120px">Ação</th>
         </tr>
-        @forelse( $modules as $module )
+        @forelse( $lessons as $lesson )
             <tr>
-                <td>{{$module->name}}</td>
-                <td>{{$module->description}}</td>
+                <td>{{$lesson->name}}</td>
+                <td>{{$lesson->url}}</td>
+                <td>{{$lesson->description}}</td>
+                <td>{{$lesson->free}}</td>
                 <td>
-                    <a href="{{route('modulos.edit', $module->id)}}" class="btn btn-warning btn-edit"
+                    <a href="{{route('aulas.edit', $lesson->id)}}" class="btn btn-warning btn-edit"
                        title="Editar Módulo">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
-                    <a href="{{route('module.lessons', $module->id)}}" class="btn btn-primary btn-lesson" title="Aulas">
+                    <a href="{{route('aulas.lessons', $lesson->id)}}" class="btn btn-primary btn-lesson" title="Aulas">
                         <span class="glyphicon glyphicon-facetime-video"></span>
                     </a>
-                    {!! Form::open(['route'=>['modulos.destroy', $module->id], 'class'=>'form form-school', 'method'=>'DELETE']) !!}
-                    {!! Form::hidden('course_id', $module->course_id) !!}
+                    {!! Form::open(['route'=>['aulas.destroy', $lesson->id], 'class'=>'form form-school', 'method'=>'DELETE']) !!}
+                    {!! Form::hidden('course_id', $lesson->course_id) !!}
                     <button title="Deletar Módulo" type="submit" class="btn btn-danger btn-delete"
                             onclick="return confirm('Você deseja realmente excluir este módulo?');">
                         <span class="glyphicon glyphicon-trash"></span>
@@ -36,13 +40,13 @@
             </tr>
         @empty
             <div class="alert alert-warning" role="alert">
-                Não há módulos cadastrado para esse curso!
+                Não há aulas cadastradas para esse módulo!
             </div>
         @endforelse
     </table>
 
     <div class="pag">
-        {!! $modules->links() !!}
+        {!! $lessons->links() !!}
     </div>
 
 @endsection

@@ -12,8 +12,11 @@ $this->group(['middleware' => 'auth'], function () {
     $this->get('curso-editar/{id}', 'TeacherController@editCourse')->name('teacher.course.edit');
     $this->post('atualizar-curso/{id}', 'TeacherController@updateCourse')->name('update.course');
 
-    $this->get('curso/{id}/modulos', 'ModuleController@byCourseId')->name('course-modules');
+    $this->get('curso/{id}/modulos', 'ModuleController@byCourseId')->name('course.modules');
     $this->resource('modulos', 'ModuleController', ['except' => 'index']);
+
+    $this->get('modulo/{id}/aulas', 'LessonController@byModuleId')->name('module.lessons');
+    $this->resource('aulas', 'LessonController', ['except' => 'index']);
 });
 
 /************************************************************************************

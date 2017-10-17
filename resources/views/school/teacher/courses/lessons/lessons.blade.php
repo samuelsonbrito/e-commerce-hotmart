@@ -27,7 +27,7 @@
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
                     {!! Form::open(['route'=>['aulas.destroy', $lesson->id], 'class'=>'form form-school', 'method'=>'DELETE']) !!}
-                    {!! Form::hidden('course_id', $lesson->course_id) !!}
+                    {!! Form::hidden('module_id', $lesson->module_id) !!}
                     <button title="Deletar Aula" type="submit" class="btn btn-danger btn-delete-aula"
                             onclick="return confirm('Você deseja realmente excluir este aula?');">
                         <span class="glyphicon glyphicon-trash"></span>

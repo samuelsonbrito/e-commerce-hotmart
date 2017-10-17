@@ -100,8 +100,13 @@ class LessonController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $lesson = $this->lesson->find($id);
+        //dd($lesson);
+
+        $lesson->delete();
+
+        return redirect()->route('module.lessons', $request->get('module_id'));
     }
 }

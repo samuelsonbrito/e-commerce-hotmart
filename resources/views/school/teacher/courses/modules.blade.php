@@ -45,7 +45,7 @@
                     {!! Form::hidden('course_id', $module->course_id) !!}
                     <button title="Deletar Módulo" type="submit" class="btn btn-danger btn-delete"
                             onclick="return confirm('Você deseja realmente excluir este módulo?');">
-                        <span class="glyphicon glyphicon-trash"></span>
+                      <span class="glyphicon glyphicon-trash"></span>
                     </button>
                     {!! Form::close() !!}
                 </td>

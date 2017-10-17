@@ -5,7 +5,6 @@
     <h1 class="title">{{$title}}</h1>
 
     <div class="form-search">
-
         {{Form::open(['route'=>'teacher.courses.search', 'class' => 'form form-inline'])}}
         {{Form::text('key-search', null, ['placeholder'=>'Digite um nome:', 'class'=>'form-control'])}}
 
@@ -17,11 +16,13 @@
         @endif
     </div>
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
-        </div>
-    @endif
+    <div class="container" style="float: left; width: 100%;">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{session('success')}}
+            </div>
+        @endif
+    </div>
 
     <div class="courses">
         @foreach($cursos as $curso)
@@ -32,23 +33,26 @@
                     @else
                         <img src="{{url("uploads/courses/{$curso->image}")}}" alt="{{$curso->name}}">
                     @endif
-                    <h2 class="title-course">
-                        {{$curso->name}}
-                    </h2>
-                    <a href="" class="btn-view-teacher" title="Visualizar curso">
-                        <span class="glyphicon glyphicon-eye-open"></span>
-                    </a>
-                    <a href="{{route('course.modules', $curso->id)}}" class="btn-module-teacher"
+
+                    <h2 class="title-course">{{$curso->name}}</h2>
+
+                    {!! Form::open(['route' => ['course.destroy', $curso->id], 'class'=>'form form-school', 'method'=>'DELETE']) !!}
+                    <button title="Deletar Curso" type="submit" class="btn btn-danger btn-delete-curso"
+                            onclick="return confirm('Você deseja realmente excluir este curso?');">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    {!! Form::close() !!}
+                    <a href="{{route('course.modules', $curso->id)}}" class="btn btn-primary btn-module-teacher"
                        title="Módulos">
                         <span class="glyphicon glyphicon-level-up"></span>
                     </a>
-                    <a href="{{route('teacher.course.edit', $curso->id)}}" class="btn-view-edit" title="Editar curso">
+                    <a href="{{route('teacher.course.edit', $curso->id)}}" class="btn btn-warning btn-edit-course"
+                       title="Editar curso">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
                 </div>
             </article>
         @endforeach
-
     </div><!--Courses-->
 
     <div class="pag">

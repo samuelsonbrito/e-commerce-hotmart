@@ -46,6 +46,7 @@
     max-width: 240px;
     position: relative;
     min-height: 230px;
+    padding-bottom: 1rem;
 }
 
 .course img {
@@ -386,25 +387,8 @@ ul.social-aula li a:hover {
 }
 
 .btn-view-edit {
-    position: absolute;
-    width: 33.3333333333%;
-    bottom: 0px;
-    background: #5E27E8;
-    color: #fff;
-    text-align: center;
-    right: 0px;
-    padding: 5px 0px;
-}
-
-.btn-module-teacher {
-    position: absolute;
-    width: 33.3333333333%;
-    bottom: 0px;
-    background: #029a75;
-    color: #fff;
-    text-align: center;
-    right: 79px;
-    padding: 5px 0px;
+    float: left;
+    width: 33%;
 }
 
 .btn-create {
@@ -441,4 +425,21 @@ ul.social-aula li a:hover {
 
 .bread {
 
+}
+
+.btn-delete-curso {
+    width: 30%;
+    float: left;
+    margin-left: 0.5rem;
+}
+
+.btn-edit-course {
+    width: 30%;
+    margin-left: .7rem;
+}
+
+.btn-module-teacher {
+    float: right;
+    width: 30%;
+    margin-right: .5rem;
 }

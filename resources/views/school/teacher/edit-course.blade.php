@@ -4,10 +4,6 @@
 
     <section class="pg-form">
 
-        {!! Form::open(['route' => ['course.destroy', $course->id], 'class'=>'form form-school', 'method'=>'DELETE']) !!}
-        {!! Form::submit('Deletar Curso?',['class'=>'btn btn-danger']) !!}
-        {!! Form::close() !!}
-
         <h1 class="titulo-form">Editar: {{$course->name}}</h1>
 
         @if(session('error'))

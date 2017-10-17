@@ -29,11 +29,6 @@ class ModuleController extends Controller
         return view('school.teacher.courses.modules', compact('title', 'course', 'modules'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $courses = Course::UserByAuth()->pluck('name', 'id');//Retorna os cursos referentes ao usuario logado
@@ -45,15 +40,9 @@ class ModuleController extends Controller
         return view('school.teacher.courses.module-create', compact('title', 'courses', 'curso_atual'));//envia o id do curso atual para a view
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(ModuleStoreUpdateRequest $request)
     {
-        //dd($request->all());
+        dd($request->all());
         $dataForm = $request->all();
 
         $insert = $this->module->create($dataForm);
@@ -64,23 +53,11 @@ class ModuleController extends Controller
             return redirect()->back()->with(['errors' => 'Falha ao cadastrar novo módulo!']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $courses = Course::UserByAuth()->pluck('name', 'id');//Retorna os cursos referentes ao usuario logado
@@ -88,7 +65,7 @@ class ModuleController extends Controller
         $module = $this->module->find($id);
         //dd($module);
 
-        //Recebendo o id do curso atual
+        //Recebendo o id do curso atual e passa para o select
         $curso_atual = Request('id');
 
         $title = "Editar módulo: {$module->name}";
@@ -96,13 +73,6 @@ class ModuleController extends Controller
         return view('school.teacher.courses.module-edit', compact('module', 'title', 'courses', 'curso_atual'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(ModuleStoreUpdateRequest $request, $id)
     {
         $module = $this->module->find($id);
@@ -118,12 +88,6 @@ class ModuleController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request, $id)
     {
         $curso = $request->get('course_id');

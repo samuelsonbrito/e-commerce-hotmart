@@ -26,13 +26,10 @@
                        title="Editar Módulo">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
-                    <a href="{{route('aulas.lessons', $lesson->id)}}" class="btn btn-primary btn-lesson" title="Aulas">
-                        <span class="glyphicon glyphicon-facetime-video"></span>
-                    </a>
                     {!! Form::open(['route'=>['aulas.destroy', $lesson->id], 'class'=>'form form-school', 'method'=>'DELETE']) !!}
                     {!! Form::hidden('course_id', $lesson->course_id) !!}
                     <button title="Deletar Módulo" type="submit" class="btn btn-danger btn-delete"
-                            onclick="return confirm('Você deseja realmente excluir este módulo?');">
+                            onclick="return confirm('Você deseja realmente excluir este aula?');">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
                     {!! Form::close() !!}

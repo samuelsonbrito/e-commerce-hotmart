@@ -42,7 +42,7 @@ class ModuleController extends Controller
 
     public function store(ModuleStoreUpdateRequest $request)
     {
-        dd($request->all());
+        //dd($request->all());
         $dataForm = $request->all();
 
         $insert = $this->module->create($dataForm);

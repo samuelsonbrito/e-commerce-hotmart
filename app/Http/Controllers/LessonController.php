@@ -35,7 +35,7 @@ class LessonController extends Controller
 
     public function create()
     {
-        $title = "Cadastrar nova aula:";
+        $title = "Cadastrar nova aula";
 
         //Recebe o modulo atual, e passa para o select de aulas
         $modulo_atual = Request('id');
@@ -69,12 +69,35 @@ class LessonController extends Controller
 
     public function edit($id)
     {
-        //
+        $lesson = $this->lesson->find($id);
+        //dd($lesson);
+
+        $title = "Editar aula";
+
+        $modules = Module::pluck('name', 'id');
+
+        //Recebe o modulo atual, e passa para o select de aulas
+        $modulo_atual = Request('id');
+
+        return view('school.teacher.courses.lessons.create-edit', compact('lesson', 'title', 'modules', 'modulo_atual'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $dataForm = $request->all();
+
+        //dd($request->all());
+        $lesson = $this->lesson->find($id);
+
+        $dataForm['free'] = isset($dataForm['free']);
+
+        $update = $lesson->update($dataForm);
+
+        if ($update) {
+            return redirect()->route('module.lessons', $dataForm['module_id']);
+        } else {
+            return redirect()->back()->with(['errors' => 'Falha ao atualizar aula!']);
+        }
     }
 
     public function destroy($id)

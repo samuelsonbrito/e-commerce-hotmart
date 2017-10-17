@@ -4,7 +4,7 @@
 
     <h1 class="title">{{$title}}</h1>
 
-    <a href="{{route('aulas.create',['id'=>$module->id])}}" class="btn btn-create" title="Cadastrar Módulo"><span
+    <a href="{{route('aulas.create',['id'=>$module->id])}}" class="btn btn-create" title="Cadastrar Aula"><span
                 class="glyphicon glyphicon-plus"></span> Cadastrar</a>
 
     <table class="table table-striped">
@@ -22,13 +22,13 @@
                 <td>{{$lesson->description}}</td>
                 <td>{{$lesson->free}}</td>
                 <td>
-                    <a href="{{route('aulas.edit', $lesson->id)}}" class="btn btn-warning btn-edit"
-                       title="Editar Módulo">
+                    <a href="{{route('aulas.edit', $lesson->id)}}" class="btn btn-warning btn-edit-aula"
+                       title="Editar Aula">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
                     {!! Form::open(['route'=>['aulas.destroy', $lesson->id], 'class'=>'form form-school', 'method'=>'DELETE']) !!}
                     {!! Form::hidden('course_id', $lesson->course_id) !!}
-                    <button title="Deletar Módulo" type="submit" class="btn btn-danger btn-delete"
+                    <button title="Deletar Aula" type="submit" class="btn btn-danger btn-delete-aula"
                             onclick="return confirm('Você deseja realmente excluir este aula?');">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>

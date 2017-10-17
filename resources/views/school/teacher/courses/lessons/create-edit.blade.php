@@ -18,8 +18,11 @@
             </div>
         @endif
 
-        {!! Form::open(['route'=>'aulas.store', 'class'=> 'form form-school']) !!}
-
+        @if(isset($lesson))
+            {!! Form::model($lesson, ['route'=>['aulas.update', $lesson->id], 'class'=> 'form form-school', 'method' => 'put']) !!}
+        @else
+            {!! Form::open(['route'=>'aulas.store', 'class'=> 'form form-school']) !!}
+        @endif
         <div class="form-group">
             {!! Form::select('module_id', $modules, $modulo_atual,['class' => 'form-control']) !!}
         </div>

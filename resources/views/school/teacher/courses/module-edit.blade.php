@@ -4,11 +4,19 @@
 
     <section class="pg-form">
 
-        <a href="{{URL::previous()}}">
-            Back <span class="glyphicon glyphicon-backward"></span>
-        </a>
+        <ol class="breadcrumb bread">
+            <li><a href="{{route('teacher.courses')}}">Cursos</a></li>
+            <li><a href="{{route('course.modules', $module->course_id)}}">{{$module->name}}</a></li>
+            <li class="active">Editar módulo</li>
+        </ol>
 
         <h1 class="titulo-form">{{$title}}</h1>
+
+        @if(session('error'))
+            <div class="alert alert-warning">
+                {{session('error')}}
+            </div>
+        @endif
 
         @if(isset($errors) && count($errors) > 0)
             <div class="alert alert-danger">

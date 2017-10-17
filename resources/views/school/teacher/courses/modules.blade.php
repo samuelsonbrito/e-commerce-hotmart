@@ -2,6 +2,11 @@
 
 @section('content')
 
+    <ol class="breadcrumb bread">
+        <li><a href="{{route('teacher.courses')}}">Cursos</a></li>
+        <li class="active">Módulos</li>
+    </ol>
+
     <h1 class="title">{{$title}}</h1>
 
     @if(session('success'))

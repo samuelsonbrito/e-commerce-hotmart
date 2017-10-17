@@ -48,9 +48,12 @@ class ModuleController extends Controller
         $insert = $this->module->create($dataForm);
 
         if ($insert)
-            return redirect()->route('course.modules', $insert->course_id);
+            return redirect()
+                ->route('course.modules', $insert->course_id);
         else
-            return redirect()->back()->with(['errors' => 'Falha ao cadastrar novo módulo!']);
+            return redirect()
+                ->back()
+                ->with('error', 'Falha ao cadastrar novo módulo!');
     }
 
     public function show($id)
@@ -82,10 +85,12 @@ class ModuleController extends Controller
         $update = $module->update($dataForm);
 
         if ($update)
-            return redirect()->route('course.modules', $dataForm['course_id']);
+            return redirect()
+                ->route('course.modules', $dataForm['course_id']);
         else
-            return redirect()->back()->with(['errors' => 'Falha ao atualizar módulo!']);
-
+            return redirect()
+                ->back()
+                ->with('errors', 'Falha ao atualizar módulo!');
     }
 
     public function destroy(Request $request, $id)

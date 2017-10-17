@@ -2,6 +2,12 @@
 
 @section('content')
 
+    <ol class="breadcrumb bread">
+        <li><a href="{{route('teacher.courses')}}">Cursos</a></li>
+        <li><a href="{{route('course.modules', $module->course_id)}}">{{$module->name}}</a></li>
+        <li class="active">Aulas</li>
+    </ol>
+
     <h1 class="title">{{$title}}</h1>
 
     <a href="{{route('aulas.create',['id'=>$module->id])}}" class="btn btn-create" title="Cadastrar Aula"><span

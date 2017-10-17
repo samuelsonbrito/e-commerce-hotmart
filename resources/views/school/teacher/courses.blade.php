@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <h1 class="title">{{$title}}</h1>
+
     <div class="form-search">
 
         {{Form::open(['route'=>'teacher.courses.search', 'class' => 'form form-inline'])}}
@@ -14,8 +16,6 @@
             <p><b>Resultados para: </b>{{$dataForm['key-search']}}</p>
         @endif
     </div>
-
-    <h1 class="title">{{$title}}</h1>
 
     @if(session('success'))
         <div class="alert alert-success">

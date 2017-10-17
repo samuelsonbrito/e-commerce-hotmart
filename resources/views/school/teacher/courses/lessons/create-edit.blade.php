@@ -4,9 +4,17 @@
 
     <section class="pg-form">
 
-        <a href="{{URL::previous()}}">
-            Back <span class="glyphicon glyphicon-backward"></span>
-        </a>
+        <ol class="breadcrumb bread">
+            <li><a href="{{route('teacher.courses')}}">Cursos</a></li>
+            <li><a href="{{URL::previous()}}">Módulo</a></li>
+            <li class="active">
+                @if(isset($lesson))
+                    Editar Aula
+                @else
+                    Cadastrar Aula
+                @endif
+            </li>
+        </ol>
 
         <h1 class="titulo-form">{{$title}}</h1>
 

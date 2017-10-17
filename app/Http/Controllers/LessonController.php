@@ -63,11 +63,6 @@ class LessonController extends Controller
         }
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $lesson = $this->lesson->find($id);
@@ -76,9 +71,11 @@ class LessonController extends Controller
         $title = "Editar aula";
 
         $modules = Module::pluck('name', 'id');
+        //dd($modules);
 
         //Recebe o modulo atual, e passa para o select de aulas
         $modulo_atual = Request('id');
+        //dd($modulo_atual);
 
         return view('school.teacher.courses.lessons.create-edit', compact('lesson', 'title', 'modules', 'modulo_atual'));
     }

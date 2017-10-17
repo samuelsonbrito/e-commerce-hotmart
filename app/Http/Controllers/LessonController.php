@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateLessonRequest;
 use Illuminate\Http\Request;
 use App\Models\Module;
 use App\Models\Lesson;
@@ -45,7 +46,7 @@ class LessonController extends Controller
         return view('school.teacher.courses.lessons.create-edit', compact('title', 'modules', 'modulo_atual'));
     }
 
-    public function store(Request $request)
+    public function store(StoreUpdateLessonRequest $request)
     {
         //dd($request->all());
         $dataForm = $request->all();
@@ -82,7 +83,7 @@ class LessonController extends Controller
         return view('school.teacher.courses.lessons.create-edit', compact('lesson', 'title', 'modules', 'modulo_atual'));
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreUpdateLessonRequest $request, $id)
     {
         $dataForm = $request->all();
 

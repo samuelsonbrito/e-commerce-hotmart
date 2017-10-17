@@ -4,6 +4,17 @@
 
     <h1 class="title">{{$title}}</h1>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{session('success')}}
+        </div>
+    @endif
+    @if(session('error'))
+        <div class="alert alert-warning">
+            {{session('error')}}
+        </div>
+    @endif
+
     <a href="{{route('modulos.create',['id'=>$course->id])}}" class="btn btn-create" title="Cadastrar Módulo"><span
                 class="glyphicon glyphicon-plus"></span> Cadastrar</a>
 

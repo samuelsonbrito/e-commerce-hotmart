@@ -93,9 +93,22 @@ class ModuleController extends Controller
         $curso = $request->get('course_id');
         //dd($curso);
 
-        //Recupera o modulo e já deleta o mesmo pelo id
-        $this->module->find($id)->delete();
+        $module = $this->module->find($id);
 
-        return redirect()->route('course.modules', $curso);
+        //verificando se há aulas nesse módulo
+        $lessons = $module->lessons()->count();
+
+        //Se existir aulas nesse módulo não vai deletar
+        //Deletar as aulas primeiro
+        if ($lessons == 0) {
+
+            $module->delete();
+            return redirect()
+                ->route('course.modules', $curso)
+                ->with('success', 'Módulo deletado com sucesso!');
+        }
+        return redirect()
+            ->back()
+            ->with('error', 'Delete as aulas do módulo primeiramente!');
     }
 }

@@ -17,6 +17,12 @@
 
     <h1 class="title">{{$title}}</h1>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{session('success')}}
+        </div>
+    @endif
+
     <div class="courses">
         @foreach($cursos as $curso)
             <article class="col-md-3 col-sm-6 col-xm-12">

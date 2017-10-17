@@ -49,7 +49,9 @@ class TeacherController extends Controller
             $upload = $image->storeAs('courses', $nameImage);
 
             if (!$upload)
-                return redirect()->back()->with(['errors' => 'Falha no upload da imagem!']);
+                return redirect()
+                    ->back()
+                    ->with('error','Falha no upload da imagem!');
         }
 
         //Reccebendo o id do usuario logado para enviar para o banco
@@ -58,9 +60,13 @@ class TeacherController extends Controller
         $insert = $this->course->create($dataForm);
 
         if ($insert)
-            return redirect()->route('teacher.courses')->with('success', 'Novo curso cadastrado com sucesso!');
+            return redirect()
+                ->route('teacher.courses')
+                ->with('success', 'Novo curso cadastrado com sucesso!');
         else
-            return redirect()->back()->with(['errors' => 'Falha ao cadastrar novo curso!']);
+            return redirect()
+                ->back()
+                ->with('error', 'Falha ao cadastrar novo curso!');
     }
 
     public function courses()
@@ -128,7 +134,9 @@ class TeacherController extends Controller
             $update = $image->storeAs('courses', $nameImage);
 
             if (!$update)
-                return redirect()->back()->with(['errors' => 'Falha no upload da imagem!']);
+                return redirect()
+                    ->back()
+                    ->with('error', 'Falha no upload da imagem!');
         }
 
         //Reccebendo o id do usuario logado para enviar para o banco
@@ -137,18 +145,31 @@ class TeacherController extends Controller
         $update = $course->update($dataForm);
 
         if ($update)
-            return redirect()->route('teacher.courses')->with('success', 'Curso atualizado com sucesso!');
+            return redirect()
+                ->route('teacher.courses')->with('success', 'Curso atualizado com sucesso!');
         else
-            return redirect()->back()->with(['errors' => 'Falha ao editar o curso!']);
+            return redirect()
+                ->back()
+                ->with('error', 'Falha ao editar o curso!');
     }
 
     public function destroyCourse($idCourse)
     {
         //dd($idCourse);
 
-        $this->course->find($idCourse)->delete();
+        $course = $this->course->find($idCourse);
 
-        return redirect()->route('teacher.courses')->with('success', 'Curso deletado com sucesso!');
+        //Qtd de módulos desse curso
+        $modules = $course->modules()->count();
 
+        if ($modules == 0) {
+            $course->delete();
+            return redirect()
+                ->route('teacher.courses')
+                ->with('success', 'Curso deletado com sucesso!');
+        }
+        return redirect()
+            ->back()
+            ->with('error', 'Delete os módulos do curso primeiramente!');
     }
 }

@@ -125,9 +125,9 @@ class TeacherController extends Controller
             $dataForm['image'] = $nameImage;
             //dd($dataForm);
 
-            $upload = $image->storeAs('courses', $nameImage);
+            $update = $image->storeAs('courses', $nameImage);
 
-            if (!$upload)
+            if (!$update)
                 return redirect()->back()->with(['errors' => 'Falha no upload da imagem!']);
         }
 
@@ -140,5 +140,15 @@ class TeacherController extends Controller
             return redirect()->route('teacher.courses')->with('success', 'Curso atualizado com sucesso!');
         else
             return redirect()->back()->with(['errors' => 'Falha ao editar o curso!']);
+    }
+
+    public function destroyCourse($idCourse)
+    {
+        //dd($idCourse);
+
+        $this->course->find($idCourse)->delete();
+
+        return redirect()->route('teacher.courses')->with('success', 'Curso deletado com sucesso!');
+
     }
 }

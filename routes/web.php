@@ -10,7 +10,8 @@ $this->group(['middleware' => 'auth'], function () {
     $this->get('meus-cursos', 'TeacherController@courses')->name('teacher.courses');
     $this->any('meus-cursos-search', 'TeacherController@courseSearch')->name('teacher.courses.search');
     $this->get('curso-editar/{id}', 'TeacherController@editCourse')->name('teacher.course.edit');
-    $this->post('atualizar-curso/{id}', 'TeacherController@updateCourse')->name('update.course');
+    $this->put('atualizar-curso/{id}', 'TeacherController@updateCourse')->name('update.course');
+    $this->delete('curso/deletar/{id}', 'TeacherController@destroyCourse')->name('course.destroy');
 
     $this->get('curso/{id}/modulos', 'ModuleController@byCourseId')->name('course.modules');
     $this->resource('modulos', 'ModuleController', ['except' => 'index']);

@@ -3,6 +3,11 @@
 @section('content')
 
     <section class="pg-form">
+
+        {!! Form::open(['route' => ['course.destroy', $course->id], 'class'=>'form form-school', 'method'=>'DELETE']) !!}
+        {!! Form::submit('Deletar Curso?',['class'=>'btn btn-danger']) !!}
+        {!! Form::close() !!}
+
         <h1 class="titulo-form">Editar: {{$course->name}}</h1>
 
         @if(isset($errors) && count($errors) > 0)
@@ -13,7 +18,7 @@
             </div>
         @endif
 
-        {!! Form::model($course, ['route'=> ['update.course', $course->id], 'class'=> 'form form-school', 'files' => true]) !!}
+        {!! Form::model($course, ['route'=> ['update.course', $course->id], 'class'=> 'form form-school', 'files' => true, 'method'=>'put']) !!}
 
         @include('school.teacher.form-course')
 

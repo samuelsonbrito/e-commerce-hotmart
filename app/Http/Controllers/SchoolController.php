@@ -77,7 +77,7 @@ class SchoolController extends Controller
             ->join('courses', 'courses.id', '=', 'modules.course_id')
             ->join('users', 'users.id', '=', 'courses.user_id')
             ->where('lessons.url', $url)
-            ->select('lessons.name', 'lessons.description', 'lessons.url', 'lessons.video', 'courses.name as course', 'courses.url as course_url', 'modules.id as module_id', 'modules.name as module', 'users.name as user_name', 'users.bibliography', 'users.image as user_image')
+            ->select('lessons.name', 'lessons.description', 'lessons.url', 'lessons.video', 'lessons.free', 'courses.name as course', 'courses.url as course_url', 'courses.free as course_free', 'modules.id as module_id', 'modules.name as module', 'users.name as user_name', 'users.bibliography', 'users.image as user_image')
             ->get()
             ->first();
         //dd($lesson);

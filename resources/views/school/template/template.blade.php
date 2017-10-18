@@ -16,6 +16,7 @@
     <!--Font awesome-->
     <link rel="stylesheet" href="{{url('assets/css/font-awesome.min.css')}}">
 
+    <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
     <!-- Meu css-->
     <link rel="stylesheet" href="{{url('assets/css/estilo.css')}}">
 

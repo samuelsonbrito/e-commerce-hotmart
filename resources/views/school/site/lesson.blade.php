@@ -15,9 +15,9 @@
                 </div>
 
                 <ol class="breadcrumb">
-                    <li><a href="#">PHP Samurai</a></li>
-                    <li><a href="#">Módulo Básico</a></li>
-                    <li class="active">Nome da aula</li>
+                    <li><a href="{{route('course', $lesson->course_url)}}">{{$lesson->course}}</a></li>
+                    <li><a href="{{route('course', $lesson->course_url)}}">{{$lesson->module}}</a></li>
+                    <li class="active">{{$lesson->name}}</li>
                 </ol>
 
                 <h1 class="titulo-aula">
@@ -33,22 +33,26 @@
                 <div class="compartilha-aula">
                     <ul class="social-aula">
                         <li>
-                            <a href="" class="facebook">
+                            <a href="javascript:void(0)" class="facebook"
+                               onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{Request::URL()}}', 'width=626,heigth=436'); return false">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="" class="twitter">
+                            <a href="javascript:void(0)" class="twitter"
+                               onclick="window.open('https://www.twitter.com/share?url={{Request::URL()}}', 'width=626,heigth=436'); return false">
                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="" class="google-plus">
+                            <a href="javascript:void(0)" class="google-plus"
+                               onclick="window.open('https://plus.google.com/share?url={{Request::URL()}}', 'width=626,heigth=436'); return false">
                                 <i class="fa fa-google-plus" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="" class="linkedin">
+                            <a href="javascript:void(0)" class="linkedin"
+                               onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url={{Request::URL()}}', 'width=626,heigth=436'); return false">
                                 <i class="fa fa-linkedin" aria-hidden="true"></i>
                             </a>
                         </li>
@@ -69,7 +73,7 @@
                     </div>
                     <div class="col-md-10">
                         <h2>
-                            {{$lesson->user_name}}
+                            https://youtu.be/EYeMX5nYJho
                         </h2>
                         <p>
                             {{$lesson->bibliography}}

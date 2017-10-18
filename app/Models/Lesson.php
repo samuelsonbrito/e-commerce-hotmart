@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
+use \App\User;
 
 class Lesson extends Model
 {
@@ -14,4 +16,5 @@ class Lesson extends Model
         'free',
         'video',
     ];
+
 }

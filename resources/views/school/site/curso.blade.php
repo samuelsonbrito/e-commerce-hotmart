@@ -59,7 +59,7 @@
                             <div class="panel-body">
 
                                 @forelse($module->lessons as $lesson)
-                                    <a href="?pg=aula" title="" class="aulas">
+                                    <a href="{{route('lesson',  $lesson->url)}}" title="" class="aulas">
                                         <i class="fa fa-video-camera" aria-hidden="true"></i>
                                         {{$lesson->name}}
 

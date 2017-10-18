@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
@@ -64,5 +65,25 @@ class SchoolController extends Controller
         $title = "LaraSchool - Curso: {$course->name}";
 
         return view('school.site.curso', compact('course', 'title', 'modules'));
+    }
+
+    public function lesson(Lesson $lesson, $url)
+    {
+        //Recuperando a lição pelo nome
+        //$lesson = $lesson->where('url', $url)->get()->first();
+        //dd($lesson);
+
+        $lesson = Lesson::join('modules', 'modules.id', '=', 'lessons.module_id')
+            ->join('courses', 'courses.id', '=', 'modules.course_id')
+            ->join('users', 'users.id', '=', 'courses.user_id')
+            ->where('lessons.url', $url)
+            ->select('lessons.name', 'lessons.description', 'lessons.url', 'lessons.video', 'courses.name as course', 'modules.id as module_id', 'modules.name as module', 'users.name as user_name', 'users.bibliography', 'users.image as user_image')
+            ->get()
+            ->first();
+        //dd($lesson);
+
+        $title = "Aula {$lesson->name}";
+
+        return view('school.site.lesson', compact('lesson', 'title'));
     }
 }

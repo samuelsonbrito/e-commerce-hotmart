@@ -27,7 +27,7 @@
         <tr>
             <th>Nome:</th>
             <th>Descrição</th>
-            <th width="120px">Ação</th>
+            <th width="150px">Ação</th>
         </tr>
         @forelse( $modules as $module )
             <tr>

@@ -42,11 +42,12 @@
 
 .course {
     border: 1px solid #999;
-    margin: 30px auto;
+    margin: 2rem;
     max-width: 240px;
     position: relative;
     min-height: 230px;
     padding-bottom: 1rem;
+    float: left;
 }
 
 .course img {
@@ -273,6 +274,7 @@ img.img-aluno-detalhe {
     color: #FFF !important;
     font-weight: bold;
     background: #fb503b;
+    margin-top: auto;
 }
 
 .aula-info {
@@ -399,18 +401,21 @@ ul.social-aula li a:hover {
 }
 
 .btn-delete {
-    width: 33%;
+    width: 30%;
     float: left;
+    margin-left: 5px;
 }
 
 .btn-edit {
     float: left;
-    width: 33%;
+    width: 30%;
+    margin-right: .6rem;
 }
 
 .btn-lesson {
-    width: 34%;
+    width: 30%;
     float: left;
+    margin-right: .1rem;
 }
 
 .btn-edit-aula {
@@ -442,4 +447,7 @@ ul.social-aula li a:hover {
     float: right;
     width: 30%;
     margin-right: .5rem;
+}
+
+.alert-courses {
 }

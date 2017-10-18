@@ -2,27 +2,24 @@
 
 @section('content')
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{session('success')}}
+        </div>
+    @endif
+
     <h1 class="title">{{$title}}</h1>
 
-    <div class="form-search">
-        {{Form::open(['route'=>'teacher.courses.search', 'class' => 'form form-inline'])}}
-        {{Form::text('key-search', null, ['placeholder'=>'Digite um nome:', 'class'=>'form-control'])}}
+    {{Form::open(['route'=>'teacher.courses.search', 'class' => 'form form-inline form-search'])}}
+    {{Form::text('key-search', null, ['placeholder'=>'Digite um nome:', 'class'=>'form-control'])}}
 
-        <input type="submit" value="Pesquisar" class="btn btn-search">
-        {{Form::close()}}
+    <input type="submit" value="Pesquisar" class="btn btn-search">
+    {{Form::close()}}
 
-        @if( isset($dataForm['key-search']))
-            <p><b>Resultados para: </b>{{$dataForm['key-search']}}</p>
-        @endif
-    </div>
+    @if( isset($dataForm['key-search']))
+        <p><b>Resultados para: </b>{{$dataForm['key-search']}}</p>
+    @endif
 
-    <div class="container" style="float: left; width: 100%;">
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{session('success')}}
-            </div>
-        @endif
-    </div>
 
     <div class="courses">
         @foreach($cursos as $curso)

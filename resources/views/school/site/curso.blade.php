@@ -41,39 +41,45 @@
     <section class="detalhes-curso-itens">
         <div class="container">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <?php for ($i = 1; $i <= 10; $i++) {?>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?=$i?>"
-                               aria-expanded="false" aria-controls="collapse-<?=$i?>">
-                                Módulo <?=$i?>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse-<?=$i?>" class="panel-collapse collapse in" role="tabpanel"
-                         aria-labelledby="headingOne">
-                        <div class="panel-body">
+                @forelse($modules as $key => $module)
 
-                            <?php for ($j = 1; $j < 10; $j++) {?>
-                            <a href="?pg=aula" title="" class="aulas">
-                                <i class="fa fa-video-camera" aria-hidden="true"></i>
-                                Aula <?=$j?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapse-{{$key}}"
+                                   aria-expanded="false" aria-controls="collapse-{{$key}}">
+                                    {{$module->name}}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-{{$key}}" class="panel-collapse collapse in" role="tabpanel"
+                             aria-labelledby="headingOne">
+                            <div class="panel-body">
 
-                                <?php if ($j == 1 || $j == 3 || $j == 6) {?>
-                                <span class="badge badge-free">
-										Free
-									</span>
-                                <?php }?>
+                                @forelse($module->lessons as $lesson)
+                                    <a href="?pg=aula" title="" class="aulas">
+                                        <i class="fa fa-video-camera" aria-hidden="true"></i>
+                                        {{$lesson->name}}
 
-
-                            </a>
-                            <?php }?>
+                                        @if($lesson->free)
+                                            <span class="badge badge-free">Free</span>
+                                        @endif
+                                    </a>
+                                @empty
+                                    <div class="alert alert-warning">
+                                        <p>Não há aulas cadastradas nesse módulo!</p>
+                                    </div>
+                                @endforelse
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?php }?>
+                @empty
+                    <div class="alert alert-warning">
+                        <p>Não há módulos cadastrados nesse curso!</p>
+                    </div>
+                @endforelse
 
             </div>
         </div>

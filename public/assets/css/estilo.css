@@ -153,6 +153,7 @@ p.info-curso strong {
 
 img.img-curso-detalhe {
     border: 5px solid #FFF;
+    max-height: 200px;
 }
 
 .btn-buy {

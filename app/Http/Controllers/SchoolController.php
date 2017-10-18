@@ -49,11 +49,20 @@ class SchoolController extends Controller
     public function course($url, Course $course)
     {
         //Recuperando o curso pela sua url
-        $course = $course->where('url', $url)->get()->first();
+        $course = $course
+            ->where('url', $url)
+            ->get()
+            ->first();
         //dd($course);
+
+        //Recupera os módulos do curso, já com as lições desse mesmo módulo
+        $modules = $course->modules()
+            ->with('lessons')
+            ->get();
+        //dd($modules);
 
         $title = "LaraSchool - Curso: {$course->name}";
 
-        return view('school.site.curso', compact('course', 'title'));
+        return view('school.site.curso', compact('course', 'title', 'modules'));
     }
 }

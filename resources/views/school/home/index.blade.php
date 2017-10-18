@@ -2,14 +2,10 @@
 
 @section('content')
 
-
     <div class="form-search">
-        {{Form::open(['route'=>'teacher.courses.search', 'class' => 'form form-inline'])}}
-        {!! Form::select('category', $categories, null, ['class'=>'form-control']) !!}
-
-        {{Form::text('key-search', null, ['placeholder'=>'Digite:', 'class'=>'form-control'])}}
-
-        <input type="submit" value="Pesquisar" class="btn btn-search">
+        {{Form::open(['route'=>'course.search', 'class' => 'form form-inline'])}}
+        {!! Form::select('category', $categories, null, ['class'=>'form-control', 'placeholder'=>'Selecione']) !!}
+        <input type="submit" value="Filtrar por Categoria" class="btn btn-search">
         {{Form::close()}}
     </div>
 
@@ -38,7 +34,11 @@
     </div><!--Courses-->
 
     <div class="pag">
-        {!! $courses->links() !!}
+        @if(isset($dataForm))
+            {!! $courses->appends($dataForm)->links() !!}
+        @else
+            {!! $courses->links() !!}
+        @endif
     </div><!--Paginação-->
 
 @endsection

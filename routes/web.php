@@ -30,5 +30,6 @@ $this->get('perfil', 'UserController@profile')->name('profile');
 $this->post('profile-update', 'UserController@profileUpdate')->name('profile.update');
 Auth::routes();
 
+$this->any('curso-pesquisar', 'SchoolController@search')->name('course.search');
 $this->get('curso/{url}', 'SchoolController@course')->name('course');
 $this->get('/', 'SchoolController@index')->name('home');

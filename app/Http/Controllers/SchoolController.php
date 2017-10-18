@@ -13,12 +13,33 @@ class SchoolController extends Controller
     public function index(Course $course, Category $category)
     {
         $categories = $category->pluck('name', 'id');
+        //dd($categories);
 
         $courses = $course
             ->where('published', true)
             ->orderBy('id', 'DESC')
             ->paginate($this->totalPage);
         //dd($courses);
+
+        $title = "LaraSchool - A sua plataforma ead!";
+
+        return view('school.home.index', compact('courses', 'title', 'categories'));
+    }
+
+    public function search(Request $request, Course $course, Category $category)
+    {
+        $dataForm = $request->except('_token');
+        //dd($dataForm);
+
+        $courses = $course
+            ->where('published', true)
+            ->where('category_id', $dataForm['category'])
+            ->orderBy('id', 'DESC')
+            ->paginate($this->totalPage);
+        //dd($courses);
+
+        $categories = $category->pluck('name', 'id');
+        //dd($categories);
 
         $title = "LaraSchool - A sua plataforma ead!";
 

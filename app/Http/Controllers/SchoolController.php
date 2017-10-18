@@ -45,4 +45,15 @@ class SchoolController extends Controller
 
         return view('school.home.index', compact('courses', 'title', 'categories'));
     }
+
+    public function course($url, Course $course)
+    {
+        //Recuperando o curso pela sua url
+        $course = $course->where('url', $url)->get()->first();
+        //dd($course);
+
+        $title = "LaraSchool - Curso: {$course->name}";
+
+        return view('school.site.curso', compact('course', 'title'));
+    }
 }

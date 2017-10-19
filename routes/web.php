@@ -34,6 +34,7 @@ $this->get('perfil', 'UserController@profile')->name('profile');
 $this->post('profile-update', 'UserController@profileUpdate')->name('profile.update');
 Auth::routes();
 
+$this->get('pedido-realizado', 'SchoolController@success')->name('success');
 $this->get('usuario/{url}', 'SchoolController@user')->name('user');
 $this->get('aula/{url}', 'SchoolController@lesson')->name('lesson');
 $this->any('curso-pesquisar', 'SchoolController@search')->name('course.search');

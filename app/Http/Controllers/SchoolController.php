@@ -117,5 +117,12 @@ class SchoolController extends Controller
 
         return view('school.site.user-profile', compact('user', 'title', 'courses'));
     }
+
+    public function success()
+    {
+        $title = "Pedido realizado com sucesso!";
+
+        return view('school.site.success', compact('title'));
+    }
 }
 

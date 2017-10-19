@@ -6,6 +6,7 @@ use App\Models\Sale;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\User;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
@@ -53,6 +54,7 @@ class SchoolController extends Controller
         //Recuperando o curso pela sua url
         $course = $course
             ->where('url', $url)
+            ->with('user')//Trazendo o usuario dono desse curso
             ->get()
             ->first();
         //dd($course);
@@ -99,4 +101,15 @@ class SchoolController extends Controller
         return view('school.site.my-courses', compact('sales', 'title'));
 
     }
+
+    public function user(User $user, $id)
+    {
+        $user = $user->find($id);
+        //dd($user);
+
+        $title = "Perfil Usuário {$user->name} - LaraSchool";
+
+        return view('school.site.user-profile', compact('user', 'title'));
+    }
 }
+

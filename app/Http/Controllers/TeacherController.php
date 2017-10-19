@@ -184,10 +184,13 @@ class TeacherController extends Controller
         return view('school.teacher.sales.sales', compact('sales', 'title'));
     }
 
-    public function myStudents()
+    public function myStudents(Sale $sale)
     {
+        $title = "Meus Alunos - LaraSchool";
 
+        $students = $sale->myStudents();
+        //dd($students);
+
+        return view('school.teacher.sales.students', compact('title','students'));
     }
-
-
 }

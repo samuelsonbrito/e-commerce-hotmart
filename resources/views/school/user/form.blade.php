@@ -28,6 +28,18 @@
     </div>
 </div>
 
+<div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
+    <div class="col-md-12">
+        {{Form::text('url', null, ['class'=>'form-control', 'placeholder'=>'Flag:', 'required'])}}
+
+        @if ($errors->has('url'))
+            <span class="help-block">
+                <strong>{{ $errors->first('url') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+
 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
     <div class="col-md-12">
         {{Form::email('email', null, ['class'=>'form-control', 'placeholder'=>'Email:','required'])}}

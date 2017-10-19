@@ -12,7 +12,7 @@
 
                 <p class="info-curso"><strong>Categoria: </strong>{{$course->category_id}}</p>
                 <p class="info-curso"><strong>Total de alunos: </strong>...</p>
-                <p class="info-curso"><strong>Professor: </strong><a href="{{route('user', $course->user->id)}}">{{$course->user->name}}</a></p>
+                <p class="info-curso"><strong>Professor: </strong><a href="{{route('user', $course->user->url)}}">{{$course->user->name}}</a></p>
                 <p class="info-curso"><strong>Gratuito: </strong>
                     @if($course->free) SIM @else NÃO @endif
                 </p>

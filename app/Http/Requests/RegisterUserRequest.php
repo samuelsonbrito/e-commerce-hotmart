@@ -24,13 +24,14 @@ class RegisterUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:100',
-            'email' => 'required|min:3|max:100|email|unique:users',//validando o email como unico
-            'password' => 'required|min:6|max:15|confirmed',
+            'name'                  => 'required|min:3|max:100',
+            'url'                   => 'required|min:3|max:20|unique:users',
+            'email'                 => 'required|min:3|max:100|email|unique:users',//validando o email como unico
+            'password'              => 'required|min:6|max:15|confirmed',
             'password_confirmation' => 'required|same:password',
-            'image' => 'image',
-            'token' => 'max:250',
-            'bibliography' => 'max:1000',
+            'image'                 => 'image',
+            'token'                 => 'max:250',
+            'bibliography'          => 'max:1000',
         ];
     }
 }

@@ -13,10 +13,18 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         Category::insert([
-            ['name' => 'PHP '],
-            ['name' => 'JavaScript '],
-            ['name' => 'Java '],
-            ['name' => 'Ajax '],
+            [
+                'name' => 'PHP', 'description' => 'Desenvolvimento Web'
+            ],
+            [
+                'name' => 'JavaScript', 'description' => 'Desenvolvimento Web'
+            ],
+            [
+                'name' => 'Java', 'description' => 'Desenvolvimento Web'
+            ],
+            [
+                'name' => 'Ajax', 'description' => 'Desenvolvimento Web'
+            ],
         ]);
     }
 }

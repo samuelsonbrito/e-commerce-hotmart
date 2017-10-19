@@ -102,11 +102,13 @@ class SchoolController extends Controller
 
     }
 
-    public function user(User $user, $id)
+    public function user(User $user, $url)
     {
         $user = $user
             ->with('courses')//Cursos do usuario
-            ->find($id);
+            ->where('url', $url)
+            ->get()
+            ->first();
         //dd($user);
 
         $courses = $user->courses;

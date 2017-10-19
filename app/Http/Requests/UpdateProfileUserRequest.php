@@ -26,13 +26,14 @@ class UpdateProfileUserRequest extends FormRequest
         $id = auth()->user()->id;
 
         return [
-            'name' => 'required|min:3|max:100',
-            'email' => "required|min:3|max:100|email|unique:users,email,{$id},id",//Validando o email com unico
-            'password' => 'required|min:6|max:15|confirmed',
+            'name'                  => 'required|min:3|max:100',
+            'url'                   => "required|min:3|max:20|unique:users,url,{$id},id",
+            'email'                 => "required|min:3|max:100|email|unique:users,email,{$id},id",//Validando o email com unico
+            'password'              => 'required|min:6|max:15|confirmed',
             'password_confirmation' => 'required|same:password',
-            'image' => 'image',
-            'token' => 'max:250',
-            'bibliography' => 'max:1000',
+            'image'                 => 'image',
+            'token'                 => 'max:250',
+            'bibliography'          => 'max:1000',
         ];
     }
 }

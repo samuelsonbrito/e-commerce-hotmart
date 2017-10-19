@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
-    protected $timestamps = false;
+    public $timestamps = false;
 
     //Função para trazer todos os cursos do usuario logado no momento
-    public function myCourses()
+    public function myCourses($totalPage)
     {
-        return $this->join('courses', 'courses.id', '=', 'sales.curso_id')
+        return $this->join('courses', 'courses.id', '=', 'sales.course_id')
             ->select('sales.id', 'courses.name', 'courses.image', 'courses.url', 'courses.description')
             ->where('sales.user_id', auth()->user()->id)
-            ->get();
+            ->paginate($totalPage);
 
         /*
          * Join com a tabela de cursos, aonde o id do curso seja igual ao curso_id da tabela de vendas

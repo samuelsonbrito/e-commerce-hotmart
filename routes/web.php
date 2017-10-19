@@ -1,12 +1,11 @@
 <?php
 
 /************************************************************************************
- * Instrutor
+ * Middleware Auth - Somente Pessoas autenticadas tem acesso
  ************************************************************************************/
 $this->group(['middleware' => 'auth'], function () {
     $this->get('cadastrar-curso', 'TeacherController@createCourse')->name('create.course');
     $this->post('cadastrar-curso', 'TeacherController@storeCourse')->name('store.course');
-
     $this->get('meus-cursos', 'TeacherController@courses')->name('teacher.courses');
     $this->any('meus-cursos-search', 'TeacherController@courseSearch')->name('teacher.courses.search');
     $this->get('curso-editar/{id}', 'TeacherController@editCourse')->name('teacher.course.edit');
@@ -18,6 +17,8 @@ $this->group(['middleware' => 'auth'], function () {
 
     $this->get('modulo/{id}/aulas', 'LessonController@byModuleId')->name('module.lessons');
     $this->resource('aulas', 'LessonController', ['except' => 'index']);
+
+    $this->get('minhas-compras', 'SchoolController@myCourses')->name('sales');
 });
 
 /************************************************************************************

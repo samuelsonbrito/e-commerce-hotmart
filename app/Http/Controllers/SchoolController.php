@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sale;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Lesson;
@@ -85,5 +86,17 @@ class SchoolController extends Controller
         $title = "Aula {$lesson->name}";
 
         return view('school.site.lesson', compact('lesson', 'title'));
+    }
+
+    public function myCourses(Sale $sale)
+    {
+        //Recuperando os cursos do usuario logado
+        $sales = $sale->myCourses($this->totalPage);
+        //dd($sales);
+
+        $title = "Minhas compras - LaraSchool";
+
+        return view('school.site.my-courses', compact('sales', 'title'));
+
     }
 }

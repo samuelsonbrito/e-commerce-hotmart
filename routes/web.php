@@ -19,6 +19,9 @@ $this->group(['middleware' => 'auth'], function () {
     $this->resource('aulas', 'LessonController', ['except' => 'index']);
 
     $this->get('minhas-compras', 'SchoolController@myCourses')->name('sales');
+
+    $this->get('minhas-vendas', 'TeacherController@mySales')->name('my.sales');
+    $this->get('meus-alunos', 'TeacherController@myStudents')->name('my.students');
 });
 
 /************************************************************************************

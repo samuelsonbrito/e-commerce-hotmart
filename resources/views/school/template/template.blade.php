@@ -55,8 +55,8 @@
                            aria-expanded="false">Instrutor<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{route('teacher.courses')}}">Cursos</a></li>
-                            <li><a href="">Alunos</a></li>
-                            <li><a href="">Vendas</a></li>
+                            <li><a href="{{route('my.students')}}">Alunos</a></li>
+                            <li><a href="{{route('my.sales')}}">Vendas</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{route('store.course')}}">Cadastrar Curso</a></li>
                         </ul>

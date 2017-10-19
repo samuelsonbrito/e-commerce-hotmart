@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Course;
@@ -51,7 +52,7 @@ class TeacherController extends Controller
             if (!$upload)
                 return redirect()
                     ->back()
-                    ->with('error','Falha no upload da imagem!');
+                    ->with('error', 'Falha no upload da imagem!');
         }
 
         //Reccebendo o id do usuario logado para enviar para o banco
@@ -172,4 +173,21 @@ class TeacherController extends Controller
             ->back()
             ->with('error', 'Delete os módulos do curso primeiramente!');
     }
+
+    public function mySales(Sale $sale)
+    {
+        $sales = $sale->mySales();
+        //dd($sale);
+
+        $title = "Minhas Vendas - LaraSchool";
+
+        return view('school.teacher.sales.sales', compact('sales', 'title'));
+    }
+
+    public function myStudents()
+    {
+
+    }
+
+
 }

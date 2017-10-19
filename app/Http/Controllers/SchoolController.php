@@ -104,12 +104,16 @@ class SchoolController extends Controller
 
     public function user(User $user, $id)
     {
-        $user = $user->find($id);
+        $user = $user
+            ->with('courses')//Cursos do usuario
+            ->find($id);
         //dd($user);
 
-        $title = "Perfil Usuário {$user->name} - LaraSchool";
+        $courses = $user->courses;
 
-        return view('school.site.user-profile', compact('user', 'title'));
+        $title = "Perfil Usuário - LaraSchool";
+
+        return view('school.site.user-profile', compact('user', 'title', 'courses'));
     }
 }
 

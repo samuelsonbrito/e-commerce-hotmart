@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Course;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,4 +27,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //Retorna todos os cursos pertecente ao usuario selecionado
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

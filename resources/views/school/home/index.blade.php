@@ -18,9 +18,9 @@
                 <div class="course">
 
                     @if($course->image == null)
-                        <img src="{{url("assets/img/sem-imagem.jpg")}}" alt="Sem imagem">
+                        <img src="{{url("assets/img/sem-imagem.jpg")}}" alt="Sem imagem" class="img-course-detail">
                     @else
-                        <img src="{{url("uploads/courses/{$course->image}")}}" alt="{{$course->name}}">
+                        <img src="{{url("uploads/courses/{$course->image}")}}" alt="{{$course->name}}" class="img-course-detail">
                     @endif
 
                     <h2 class="title-course">

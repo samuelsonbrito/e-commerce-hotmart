@@ -45,20 +45,19 @@
     margin: 2rem;
     max-width: 240px;
     position: relative;
-    min-height: 230px;
-    padding-bottom: 1rem;
+    min-height: 100%;
     float: left;
 }
 
 .course img {
-
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .title-course {
     color: #6f6f6f;
     font-size: 1.8em;
     margin: 8px;
-    padding-bottom: 4rem;
 }
 
 .btn-view {
@@ -68,8 +67,8 @@
     text-align: center;
     padding: 0.8rem;
     font-size: 1em;
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    float: left;
 }
 
 .btn-view:hover {

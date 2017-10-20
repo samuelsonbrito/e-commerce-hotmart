@@ -8,6 +8,14 @@ class Sale extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = [
+        'course_id',
+        'user_id',
+        'transaction',
+        'status',
+        'date',
+    ];
+
     //Função para trazer todos os cursos do usuario logado no momento
     public function myCourses($totalPage)
     {

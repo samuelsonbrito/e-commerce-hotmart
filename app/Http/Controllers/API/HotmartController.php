@@ -30,6 +30,16 @@ class HotmartController extends Controller
 
         //Recuperar o usuario pelo email
         $student = User::where('email', $dataForm['email'])->get()->first();
+        //Se a pessoa tenta comprar o curso sem ser cadastrada
+        //Então o estudante é cadastrado automaticamente
+        if ($student == null) {
+            $student = User::create([
+                'name'          => $dataForm['name'],
+                'email'         => $dataForm['email'],
+                'url'           => createUrl($dataForm['name']).date('Hs'),//Função do Helper
+                'password'      => bcrypt(generatePassword())//Função do Helper(Salvando a senha já criptografada)
+            ]);
+        }
         //dd($student);
 
         $date = Carbon::parse($dataForm['purchase_date'])->format('Y-m-d');
@@ -37,11 +47,11 @@ class HotmartController extends Controller
 
         //Venda
         $newSale = Sale::create([
-            'course_id'     => $course->id,
-            'user_id'       => $student->id,
-            'transaction'   => $dataForm['transaction'],
-            'status'        => $dataForm['status'],
-            'date'          => $date,
+            'course_id' => $course->id,
+            'user_id' => $student->id,
+            'transaction' => $dataForm['transaction'],
+            'status' => $dataForm['status'],
+            'date' => $date,
         ]);
 
         if ($newSale)

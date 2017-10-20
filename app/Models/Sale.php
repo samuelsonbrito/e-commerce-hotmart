@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Sale extends Model
 {
@@ -54,5 +55,11 @@ class Sale extends Model
     public function myStudents()
     {
         return $this->mySales();
+    }
+
+    //Mutator para formatar a data do jeito que eu quiser somente na exibição
+    public function getDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
     }
 }

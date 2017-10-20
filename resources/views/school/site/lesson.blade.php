@@ -137,6 +137,7 @@
                     <!-- End SideBar-->
 
             </div><!--Aula-Info-->
+        </div>
     </section>
 
 @endsection

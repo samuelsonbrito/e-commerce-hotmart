@@ -95,11 +95,11 @@ class SchoolController extends Controller
         //Recuperando os cursos do usuario logado
         $sales = $sale->myCourses($this->totalPage);
         //dd($sales);
+        //return $sales;
 
         $title = "Minhas compras - LaraSchool";
 
         return view('school.site.my-courses', compact('sales', 'title'));
-
     }
 
     public function user(User $user, $url)

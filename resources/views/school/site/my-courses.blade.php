@@ -6,12 +6,12 @@
 
     <div class="courses">
 
-        @forelse($sales as $sale)
+        @forelse($sales as $course)
             <article class="col-md-3 col-sm-6 col-xm-12">
                 <div class="course">
 
                     @if($course->image == null)
-                        <img src="{{url("assets/img/sem-imagem.jpg")}}" alt="Sem imagem">
+                        <img src="{{url("assets/img/sem-imagem.jpg")}}" alt="{{$course->name}}">
                     @else
                         <img src="{{url("uploads/courses/{$course->image}")}}" alt="{{$course->name}}">
                     @endif

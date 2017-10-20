@@ -32,7 +32,7 @@ class Sale extends Model
          */
     }
 
-    //Trazer os cursos da pessoa logada no momento
+    //Trazer as vendas da pessoa logada no momento
     public function mySales()
     {
         return $this->join('courses', 'courses.id', '=', 'sales.course_id')
